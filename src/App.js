@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route, link } from "react-router-dom";
 import Home from './components/Home';
 import Navbar from './components/Navbar'
-import Products from './components/Products'
-import User from './components/User'
+import ProductsPage from './components/ProductsPage';
+import User from './components/User';
 import "./App.css";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/Products' element={<Products />} />
+            <Route path='/productsPage' element={<ProductsPage />} />
             <Route path='/User' element={<User />} />
           </Routes>
       </BrowserRouter>
@@ -23,4 +23,3 @@ function App() {
 }
 
 export default App;
-
