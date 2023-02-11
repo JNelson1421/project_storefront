@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
             state.totalCost = state.totalCost + action.payload.price;
         },
         removeItem: (state, action) => {
-            state.productList = state.productList.filter((item) => item.id != action.payload.id);
+            state.productList = state.productList.filter((item) => item.id !== action.payload.id);
             state.totalCost = state.totalCost - action.payload.price;
         },
         resetCart: (state) => {
