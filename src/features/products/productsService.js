@@ -15,6 +15,22 @@ async function getProducts() {
   }
 }
 
-const productsService = { getProducts };
+async function getProductDetails(id) {
+  try {
+    const response = await fetch(API_URL + `/${id}`, {
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+    const product = await response.json();
+    return product;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+
+const productsService = { getProducts, getProductDetails };
 
 export default productsService;

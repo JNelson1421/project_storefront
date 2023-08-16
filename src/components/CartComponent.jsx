@@ -1,17 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../features/cart/CartSlice";
+import { addItem, removeItem, deleteItem } from "../features/cart/CartSlice";
 import '../css/CardComponent.css'
 import { Link, useNavigate } from "react-router-dom";
 
-const CardComponent = ({ id, brand, name, price, img }) => {
+const CartComponent = ({ id, brand, name, price, img }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
   
     const addToCart = () => {
       dispatch(addItem({ id, brand, name, price, img }));
-      navigate('/cart');
     };
+
+    const decreaseItem = () => {
+        dispatch(removeItem({ id, brand, name, price, img }));
+      };
+      
+      const deleteProduct = () => {
+        dispatch(deleteItem({ id, brand, name, price, img }));
+      };
   
     return (
       <div className="card">
@@ -27,11 +34,17 @@ const CardComponent = ({ id, brand, name, price, img }) => {
           Details
         </Link>
           <button className="cart-button" onClick={addToCart}>
-            Add to Cart
+            Increase Quantity
+          </button>
+          <button className="cart-button" onClick={decreaseItem}>
+            Decrease Quantity
+          </button>
+          <button className="cart-button" onClick={deleteProduct}>
+            Delete Item
           </button>
         </div>
       </div>
     );
   };
   
-  export default CardComponent;
+  export default CartComponent;
